@@ -1,2 +1,1 @@
-# prazdny repozitar
-PONG Pro čtyři hráče s abilitami a různými tvary míčku
+PONG Pro čtyři hráče s abilitama a různými tvary míčku
