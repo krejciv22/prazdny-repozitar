@@ -29,11 +29,25 @@ micek = pygame.image.load('micek spravny.png')
 micek = pygame.transform.scale(micek,(100,100,))
 
 platforma = pygame.image.load('platforma.png')
-platforma = pygame.transform.scale(platforma,(40,300,))
+platforma = pygame.transform.scale(platforma,(20,200,))
 
 platforma2 = pygame.image.load('platforma2.png')
-platforma2 = pygame.transform.scale(platforma,(700,40,))
+platforma2 = pygame.transform.scale(platforma,(500,20,))
 
+vyskamice = 520
+sirkamice = 902
+platforma1vyska = 408
+platforma1sirka = 0
+platforma2vyska = 408
+platforma2sirka = 1900
+platforma3vyska = 3
+platforma3sirka = 709
+platforma4vyska = 985
+platforma4sirka = 709
+
+
+micek_rychlost_x = 7
+micek_rychlost_y = 7
 
 
 
@@ -42,15 +56,17 @@ while True:
         if udalost.type == pygame.QUIT:
             pygame.quit()
             sys.exit()
-    
+                
+
     okno.blit(pozadi,(0,0))
-    okno.blit(micek,(902,510))
-    okno.blit(platforma,(0,358))
-    okno.blit(platforma,(1880,358))
-    okno.blit(platforma2,(606,3))
-    okno.blit(platforma2,(606,965))
+    okno.blit(micek,(sirkamice,vyskamice))
+    okno.blit(platforma,(platforma1sirka,platforma1vyska))
+    okno.blit(platforma,(platforma2sirka,platforma2vyska))
+    okno.blit(platforma2,(platforma3sirka,platforma3vyska))
+    okno.blit(platforma2,(platforma4sirka,platforma4vyska))
    
-   
+
+    
    
    
    
