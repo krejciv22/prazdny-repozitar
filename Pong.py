@@ -13,7 +13,7 @@ velikost = 50
 pozice_x = (ROZLISENI_X - velikost) / 2
 pozice_y = (ROZLISENI_Y - velikost) / 2
 rychlost = 3
-
+pohyb = False
 
 okno = pygame.display.set_mode((ROZLISENI_X, ROZLISENI_Y))
 pygame.display.set_caption('Pong')
@@ -56,15 +56,52 @@ while True:
         if udalost.type == pygame.QUIT:
             pygame.quit()
             sys.exit()
-                
+            
+            
+    keys = pygame.key.get_pressed()
+    if keys[pygame.K_a]:
+        pohyb = True                
+        platforma3sirka-=1
+    if keys[pygame.K_d]:
+        pohyb = True
+        platforma3sirka+=1
+    
+    
+    
+    
+    
+    
+    if keys[pygame.K_b]:
+        pohyb = True
+        platforma4sirka-=1
+    if keys[pygame.K_m]:
+        pohyb = True
+        platforma4sirka+=1
+    if keys[pygame.K_UP]:
+        pohyb = True
+        platforma1vyska-=1
+    if keys[pygame.K_DOWN]:
+        pohyb = True
+        platforma1vyska+=1
+    if keys[pygame.K_KP6]:
+        pohyb = True
+        platforma2vyska+=1
+    if keys[pygame.K_KP9]:
+        pohyb = True
+        platforma2vyska-=1
+
+
+
+
 
     okno.blit(pozadi,(0,0))
     okno.blit(micek,(sirkamice,vyskamice))
-    okno.blit(platforma,(platforma1sirka,platforma1vyska))
+    
+    okno.blit(platforma,(platforma1sirka,platforma1vyska))  
     okno.blit(platforma,(platforma2sirka,platforma2vyska))
     okno.blit(platforma2,(platforma3sirka,platforma3vyska))
     okno.blit(platforma2,(platforma4sirka,platforma4vyska))
-   
+       
 
     
    
