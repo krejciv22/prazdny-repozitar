@@ -5,15 +5,20 @@ import math
 pygame.init()
 
 
+
 ROZLISENI_Y = 1017
 ROZLISENI_X = 1920
 FPS = 60
 
-velikost = 50
-pozice_x = (ROZLISENI_X - velikost) / 2
-pozice_y = (ROZLISENI_Y - velikost) / 2
-rychlost = 3
+#velikost = 50
+#pozice_x = (ROZLISENI_X - velikost) / 2
+#pozice_y = (ROZLISENI_Y - velikost) / 2
+#rychlost = 3
 pohyb = False
+
+
+
+
 
 okno = pygame.display.set_mode((ROZLISENI_X, ROZLISENI_Y))
 pygame.display.set_caption('Pong')
@@ -46,57 +51,44 @@ platforma4vyska = 985
 platforma4sirka = 709
 
 
-micek_rychlost_x = 7
-micek_rychlost_y = 7
-
-
 
 while True:
     for udalost in pygame.event.get():
         if udalost.type == pygame.QUIT:
             pygame.quit()
             sys.exit()
-            
-            
+   
+     
     keys = pygame.key.get_pressed()
     if keys[pygame.K_a]:
         pohyb = True                
-        platforma3sirka-=1
+        platforma3sirka-=2
     if keys[pygame.K_d]:
         pohyb = True
-        platforma3sirka+=1
-    
-    
-    
-    
-    
-    
+        platforma3sirka+=2
     if keys[pygame.K_b]:
         pohyb = True
-        platforma4sirka-=1
+        platforma4sirka-=2    
     if keys[pygame.K_m]:
         pohyb = True
-        platforma4sirka+=1
+        platforma4sirka+=2
     if keys[pygame.K_UP]:
         pohyb = True
-        platforma1vyska-=1
+        platforma1vyska-=2
     if keys[pygame.K_DOWN]:
         pohyb = True
-        platforma1vyska+=1
+        platforma1vyska+=2
     if keys[pygame.K_KP6]:
         pohyb = True
-        platforma2vyska+=1
+        platforma2vyska+=2
     if keys[pygame.K_KP9]:
         pohyb = True
-        platforma2vyska-=1
+        platforma2vyska-=2
 
-
-
-
+  
 
     okno.blit(pozadi,(0,0))
-    okno.blit(micek,(sirkamice,vyskamice))
-    
+    okno.blit(micek,(sirkamice,vyskamice)) 
     okno.blit(platforma,(platforma1sirka,platforma1vyska))  
     okno.blit(platforma,(platforma2sirka,platforma2vyska))
     okno.blit(platforma2,(platforma3sirka,platforma3vyska))
@@ -104,7 +96,4 @@ while True:
        
 
     
-   
-   
-   
     pygame.display.update()
