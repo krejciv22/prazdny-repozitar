@@ -40,9 +40,7 @@ class Ball(Block):
             self.restart_counter()
         
     def collisions(self):
-        if self.rect.top <= 0 or self.rect.bottom >= screen_height:
-            pygame.mixer.Sound.play(plob_sound)
-            self.speed_y *= -1
+        
 
         if pygame.sprite.spritecollide(self,self.paddles,False):
             pygame.mixer.Sound.play(plob_sound)
@@ -109,6 +107,13 @@ class Opponent2(Block):
             self.rect.top = 0
         if self.rect.bottom >= screen_height:
             self.rect.bottom = screen_height
+    def update(self,ball_group):
+        self.rect.y += self.movement
+        self.screen_constrain()
+
+
+
+
 class Opponent3(Block):
     def __init__(self,path,x_pos,y_pos,speed):
         super().__init__(path,x_pos,y_pos)
@@ -131,7 +136,6 @@ class GameManager:
         self.paddle_group = paddle_group
 
     def run_game(self):
-        # Drawing the game objects
         self.paddle_group.draw(screen)
         self.ball_group.draw(screen)
         
@@ -165,12 +169,23 @@ pygame.init()
 clock = pygame.time.Clock()
 
 
+
 screen_width = 1280
 screen_height = 960
 screen = pygame.display.set_mode((screen_width,screen_height))
+
+
+
+
+
+
+
+
+
+
 pygame.display.set_caption('Pong')
 
-# Global Variables
+
 bg_color = pygame.Color('#2F373F')
 accent_color = (27,35,43)
 basic_font = pygame.font.Font('freesansbold.ttf', 32)
@@ -178,17 +193,17 @@ plob_sound = pygame.mixer.Sound("pong.ogg")
 score_sound = pygame.mixer.Sound("score.ogg")
 middle_strip = pygame.Rect(screen_width/2 - 2,0,4,screen_height)
 
-# Game objects
+
 player = Player('Paddle.png',screen_width - 20,screen_height/2,5)
 opponent = Opponent('Paddle.png',20,screen_width/2,5)
 paddle_group = pygame.sprite.Group()
 paddle_group.add(player)
 paddle_group.add(opponent)
 opponent2 = Opponent2('Paddle2.png',635,screen_width/40,5)
-
 paddle_group.add(opponent2)
 opponent3 = Opponent3('Paddle2.png',635,screen_width/1.4,5)
 paddle_group.add(opponent3)
+
 
 
 
@@ -197,6 +212,8 @@ ball_sprite = pygame.sprite.GroupSingle()
 ball_sprite.add(ball)
 
 game_manager = GameManager(ball_sprite,paddle_group)
+
+
 
 while True:
     for event in pygame.event.get():
@@ -235,6 +252,17 @@ while True:
                 opponent2.movement += opponent2.speed
             if event.key == pygame.K_d:
                 opponent2.movement -= opponent2.speed
+         
+        if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_a:
+                opponent3.movement -= opponent3.speed
+            if event.key == pygame.K_d:
+                opponent3.movement += opponent3.speed
+        if event.type == pygame.KEYUP:
+            if event.key == pygame.K_a:
+                opponent3.movement += opponent3.speed
+            if event.key == pygame.K_d:
+                opponent3.movement -= opponent3.speed
     
     screen.fill(bg_color)
     pygame.draw.rect(screen,accent_color,middle_strip)
@@ -245,3 +273,5 @@ while True:
     
     pygame.display.flip()
     clock.tick(120)
+
+
