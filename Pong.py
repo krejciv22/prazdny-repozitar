@@ -1,4 +1,4 @@
-import pygame, sys, random
+import pygame, sys, random, math 
 
 class Block(pygame.sprite.Sprite):
     def __init__(self,path,x_pos,y_pos):
