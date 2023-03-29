@@ -40,7 +40,7 @@ class Ball(Block):
             self.restart_counter()
         
     def collisions(self):
-        
+        if 
 
         if pygame.sprite.spritecollide(self,self.paddles,False):
             pygame.mixer.Sound.play(plob_sound)
@@ -277,7 +277,7 @@ while True:
     screen.fill(bg_color)
     pygame.draw.rect(screen,accent_color,middle_strip)
     
-    
+    #wdfsdfsdfsd
     game_manager.run_game()
 
     
