@@ -40,7 +40,9 @@ class Ball(Block):
             self.restart_counter()
         
     def collisions(self):
-        if 
+        if self.rect.top <= 0 or self.rect.bottom >= screen_height:
+            pygame.mixer.Sound.play(plob_sound)
+            self.speed_y *= -1 
 
         if pygame.sprite.spritecollide(self,self.paddles,False):
             pygame.mixer.Sound.play(plob_sound)
